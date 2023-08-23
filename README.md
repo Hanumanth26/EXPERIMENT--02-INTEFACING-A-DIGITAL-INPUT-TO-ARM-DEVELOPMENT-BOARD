@@ -51,10 +51,78 @@ The full form of an ARM is an advanced reduced instruction set computer (RISC) m
 
 
 ## STM 32 CUBE PROGRAM :
+```
+#include "main.h"
+#include "stdbool.h"
+bool button_status;
+void push_button();
+
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+
+int main(void)
+{
+    HAL_Init();
+
+    while (1)
+
+   {
+	  push_button();
+   }
+
+}
+
+void push_button()
+  {
+	  button_status=HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_13);
+
+	  	  if (button_status==0)
+
+	  	  {
+
+	  		  HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_SET);
+
+	  		  HAL_Delay(5000);
+
+	  		  HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_RESET);
+
+	  		  HAL_Delay(5000);
+
+	  	  }
+
+	  	  else
+
+	  	  {
+
+	  		  HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_RESET);
+
+	  	  }
+  }
 
 
+
+
+```
 
 ## Output  :
+```
+LED Off
+```
+<img width="367" alt="image" src="https://github.com/Hanumanth26/EXPERIMENT--02-INTEFACING-A-DIGITAL-INPUT-TO-ARM-DEVELOPMENT-BOARD/assets/121033192/a796cca6-69ab-43bb-a070-4cc344787a01">
+
+
+
+LED ON
+
+<img width="356" alt="image" src="https://github.com/Hanumanth26/EXPERIMENT--02-INTEFACING-A-DIGITAL-INPUT-TO-ARM-DEVELOPMENT-BOARD/assets/121033192/c84f3e0c-5d90-47aa-a9a8-f2356c9dab76">
+
+
+LED OFF
+
+<img width="353" alt="image" src="https://github.com/Hanumanth26/EXPERIMENT--02-INTEFACING-A-DIGITAL-INPUT-TO-ARM-DEVELOPMENT-BOARD/assets/121033192/9910438b-27f9-4394-ad5a-4892d23f8174">
+
+
+
  
  
  
